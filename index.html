@@ -196,15 +196,17 @@
       transform: translateY(-5px);
     }
 
+    /* LeetCode icon specific styles */
     .leetcode-icon {
       width: 1.8rem;
       height: 1.8rem;
-      filter: grayscale(100%) brightness(0.8);
+      filter: grayscale(100%) brightness(1) contrast(1);
       transition: all 0.3s ease;
     }
 
-    .social-icons a:hover .leetcode-icon {
-      filter: grayscale(0%) brightness(1);
+    .leetcode-icon:hover,
+    .leetcode-icon:active {
+      filter: invert(49%) sepia(87%) saturate(747%) hue-rotate(164deg) brightness(101%) contrast(101%);
       transform: translateY(-5px);
     }
 
@@ -300,13 +302,13 @@
           <a href="https://wa.me/9363354667" target="_blank"><i class="fab fa-whatsapp"></i></a>
           <a href="mailto:arunmathivan42o@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
           <a href="https://leetcode.com/u/JYUtIBaQ4F/" target="_blank">
-            <img src="https://leetcode.com/static/images/LeetCode_logo_rvs.png" class="leetcode-icon" alt="LeetCode"/>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" class="leetcode-icon" alt="LeetCode"/>
           </a>
           <a href="./media/resume.pdf" download><i class="fas fa-file-download"></i></a>
         </div>
       </div>
       <div class="hero-image-container">
-        <img src="./media/pic.png" alt="Arun's Profile Picture" class="hero-image" />
+        <img src="./media/titleimage.jpeg" alt="Arun's Profile Picture" class="hero-image" />
       </div>
     </div>
   </section>
