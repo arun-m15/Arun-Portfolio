@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARUN Skills</title>
+  <link rel="shortcut icon" href="./media/titleimage.jpeg" type="image/x-icon">
+
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #1e1e1e;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      width: 100%;
+      border-radius: 30px;
+      padding: 15px 30px;
+      margin-left: -20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    nav .nav-left .name {
+      font-weight: 800;
+      color: #44daff;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+    }
+
+    nav .nav-right {
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #b0b0b0;
+      margin: 0 12px;
+      padding: 8px 12px;
+      transition: all 0.3s ease;
+      border-radius: 20px;
+    }
+
+    nav a:hover {
+      background-color: #333;
+      color: #44daff;
+      transform: translateY(-2px);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 30px;
+    }
+
+    .container h1 {
+      text-transform: uppercase;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      padding-bottom: 10px;
+      letter-spacing: 3px;
+      position: relative;
+    }
+
+    .container h1:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100px;
+      height: 3px;
+      background: #44daff;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 25px;
+      width: 100%;
+    }
+
+    .skill-category {
+      background: linear-gradient(145deg, #252525, #1e1e1e);
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .skill-category:hover {
+      transform: translateY(-5px);
+    }
+
+    .skill-category h2 {
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      color: #44daff;
+      margin-top: 0;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .skill-category h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: #44daff;
+    }
+
+    .skill-item {
+      margin-bottom: 20px;
+    }
+
+    .skill-name {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .skill-bar {
+      height: 10px;
+      background-color: #333;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .skill-progress {
+      height: 100%;
+      background: linear-gradient(90deg, #44daff, #0099cc);
+      border-radius: 5px;
+      transition: width 1s ease-in-out;
+    }
+
+    .language-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .language-flag {
+      width: 30px;
+      height: 20px;
+      margin-right: 15px;
+      border-radius: 3px;
+      object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      nav {
+        flex-direction: column;
+        padding: 15px;
+      }
+      
+      nav .nav-right {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .container h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="nav-left">
+      <div class="name">ARUN M PORTFOLIO</div>
+    </div>
+    <div class="nav-right">
+      <a href="index.html">Home</a>
+      <a href="skill.html">Skills</a>
+      <a href="education.html">Education</a>
+      <a href="project.html">Projects</a>
+      <a href="certificate.html">Certifications</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>My Skills</h1>
+    
+    <div class="skills-grid">
+      <!-- Programming Languages -->
+      <div class="skill-category">
+        <h2>Programming Languages</h2>
+        
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>C/C++ (Data Science)</span>
+            <span>85%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 85%"></div>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>Python</span>
+            <span>75%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 75%"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Web Technology -->
+      <div class="skill-category">
+        <h2>Web Technology</h2>
+        
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>HTML</span>
+            <span>80%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 80%"></div>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>CSS</span>
+            <span>70%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 70%"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Communication -->
+      <div class="skill-category">
+        <h2>Communication</h2>
+        
+        <div class="language-item">
+          <img src="https://flagcdn.com/w20/gb.png" class="language-flag" alt="English">
+          <span>English (Professional)</span>
+        </div>
+        
+        <div class="language-item">
+          <img src="https://flagcdn.com/w20/in.png" class="language-flag" alt="Tamil">
+          <span>Tamil (Native)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Animate skill bars on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const skillBars = document.querySelectorAll('.skill-progress');
+      skillBars.forEach(bar => {
+        const width = bar.style.width;
+        bar.style.width = '0';
+        setTimeout(() => {
+          bar.style.width = width;
+        }, 100);
+      });
+    });
+  </script>
+</body>
+</html>
