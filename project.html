@@ -5,40 +5,81 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ARUN Projects</title>
   <link rel="shortcut icon" href="./media/titleimage.jpeg" type="image/x-icon">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <style>
-    /* General Styles */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+    
+    :root {
+      --primary: #44daff;
+      --primary-dark: #0099cc;
+      --bg-dark: #121212;
+      --bg-darker: #0d0d0d;
+      --card-bg: linear-gradient(145deg, #252525, #1e1e1e);
+      --text-light: #f9f9f9;
+      --text-gray: #b0b0b0;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #121212;
-      color: #f9f9f9;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      padding: 20px;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      overflow-x: hidden;
+      background: radial-gradient(circle at 10% 20%, #1a1a1a 0%, var(--bg-dark) 90%);
+    }
+
+    /* Particle background */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      opacity: 0.3;
     }
 
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #1e1e1e;
+      background-color: rgba(30, 30, 30, 0.9);
       position: sticky;
       top: 0;
       z-index: 1000;
-      width: 100%;
+      width: calc(100% - 40px);
       border-radius: 30px;
-      padding: 15px 30px;
-      margin-left: -20px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      padding: 15px 20px;
+      margin: 20px auto 10px auto;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    nav.scrolled {
+      padding: 10px 20px;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
     }
 
     nav .nav-left .name {
       font-weight: 800;
-      color: #44daff;
+      color: var(--primary);
       font-size: 1.5rem;
       letter-spacing: 1px;
+      background: linear-gradient(to right, var(--primary), #00ffcc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 10px rgba(68, 218, 255, 0.3);
+      transition: all 0.3s ease;
     }
 
     nav .nav-right {
@@ -50,43 +91,191 @@
 
     nav a {
       text-decoration: none;
-      color: #b0b0b0;
+      color: var(--text-gray);
       margin: 0 12px;
-      padding: 8px 12px;
-      transition: all 0.3s ease;
+      padding: 8px 15px;
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
       border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    nav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(68, 218, 255, 0.2), transparent);
+      transition: all 0.6s ease;
     }
 
     nav a:hover {
-      background-color: #333;
-      color: #44daff;
-      transform: translateY(-2px);
+      background-color: rgba(51, 51, 51, 0.7);
+      color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(68, 218, 255, 0.2);
     }
 
+    nav a:hover::before {
+      left: 100%;
+    }
+
+    /* Floating circles background */
+    .floating-circles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .floating-circles li {
+      position: absolute;
+      display: block;
+      list-style: none;
+      width: 20px;
+      height: 20px;
+      background: rgba(68, 218, 255, 0.2);
+      animation: float 25s linear infinite;
+      bottom: -150px;
+      border-radius: 50%;
+    }
+
+    .floating-circles li:nth-child(1) {
+      left: 25%;
+      width: 80px;
+      height: 80px;
+      animation-delay: 0s;
+      animation-duration: 20s;
+    }
+
+    .floating-circles li:nth-child(2) {
+      left: 10%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 2s;
+      animation-duration: 12s;
+    }
+
+    .floating-circles li:nth-child(3) {
+      left: 70%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 4s;
+    }
+
+    .floating-circles li:nth-child(4) {
+      left: 40%;
+      width: 60px;
+      height: 60px;
+      animation-delay: 0s;
+      animation-duration: 18s;
+    }
+
+    .floating-circles li:nth-child(5) {
+      left: 65%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 0s;
+    }
+
+    .floating-circles li:nth-child(6) {
+      left: 75%;
+      width: 110px;
+      height: 110px;
+      animation-delay: 3s;
+    }
+
+    .floating-circles li:nth-child(7) {
+      left: 35%;
+      width: 150px;
+      height: 150px;
+      animation-delay: 7s;
+    }
+
+    .floating-circles li:nth-child(8) {
+      left: 50%;
+      width: 25px;
+      height: 25px;
+      animation-delay: 15s;
+      animation-duration: 45s;
+    }
+
+    .floating-circles li:nth-child(9) {
+      left: 20%;
+      width: 15px;
+      height: 15px;
+      animation-delay: 2s;
+      animation-duration: 35s;
+    }
+
+    .floating-circles li:nth-child(10) {
+      left: 85%;
+      width: 150px;
+      height: 150px;
+      animation-delay: 0s;
+      animation-duration: 11s;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+      }
+      100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+      }
+    }
+
+    /* Container Styles */
     .container {
       width: 90%;
       max-width: 1200px;
-      margin: 30px auto;
+      margin: 50px auto;
       padding: 30px;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .container h1 {
       text-transform: uppercase;
       font-size: 2.5rem;
       margin-bottom: 30px;
-      padding-bottom: 10px;
       letter-spacing: 3px;
       position: relative;
+      background: linear-gradient(to right, #ffffff, var(--primary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 20px rgba(68, 218, 255, 0.3);
     }
 
-    .container h1:after {
+    .container h1::after {
       content: '';
       position: absolute;
-      bottom: 0;
+      bottom: -10px;
       left: 0;
       width: 100px;
-      height: 3px;
-      background: #44daff;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), transparent);
+      border-radius: 2px;
     }
 
     /* Projects Grid */
@@ -98,15 +287,26 @@
     }
 
     .project-card {
-      background: linear-gradient(145deg, #252525, #1e1e1e);
-      border-radius: 12px;
+      background: var(--card-bg);
+      border-radius: 15px;
       overflow: hidden;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+      border: 1px solid rgba(68, 218, 255, 0.1);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease-out forwards;
     }
 
+    .project-card:nth-child(1) { animation-delay: 0.3s; }
+    .project-card:nth-child(2) { animation-delay: 0.5s; }
+    .project-card:nth-child(3) { animation-delay: 0.7s; }
+    .project-card:nth-child(4) { animation-delay: 0.9s; }
+
     .project-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      border-color: rgba(68, 218, 255, 0.3);
     }
 
     .project-preview {
@@ -117,7 +317,7 @@
     }
 
     .project-details {
-      padding: 20px;
+      padding: 25px;
     }
 
     .project-header {
@@ -130,12 +330,12 @@
     .project-title {
       font-size: 1.5rem;
       font-weight: 600;
-      color: #44daff;
+      color: var(--primary);
       margin: 0;
     }
 
     .project-status {
-      padding: 5px 10px;
+      padding: 5px 15px;
       border-radius: 20px;
       font-size: 0.8rem;
       font-weight: bold;
@@ -160,12 +360,12 @@
     .project-description {
       margin: 15px 0;
       line-height: 1.6;
-      color: #cccccc;
+      color: var(--text-gray);
     }
 
     .project-tech {
       font-style: italic;
-      color: #aaaaaa;
+      color: var(--text-gray);
       margin-bottom: 15px;
     }
 
@@ -177,28 +377,57 @@
     .project-link {
       display: flex;
       align-items: center;
-      gap: 5px;
-      color: #44daff;
+      gap: 8px;
+      color: var(--primary);
       text-decoration: none;
-      transition: color 0.3s ease;
+      transition: all 0.3s ease;
+      padding: 8px 15px;
+      border-radius: 20px;
+      background-color: rgba(68, 218, 255, 0.1);
     }
 
     .project-link:hover {
-      color: #ffffff;
+      color: white;
+      background-color: rgba(68, 218, 255, 0.3);
+      transform: translateY(-2px);
     }
 
     .project-link i {
       font-size: 1.2rem;
     }
 
-    @media (max-width: 768px) {
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: rgba(30, 30, 30, 0.8);
+      color: var(--text-gray);
+      font-size: 1rem;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      position: relative;
+      margin-top: 50px;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--primary), transparent);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
       .projects-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
       }
-      
+    }
+
+    @media (max-width: 768px) {
       nav {
         flex-direction: column;
-        padding: 15px;
       }
       
       nav .nav-right {
@@ -206,22 +435,64 @@
         flex-wrap: wrap;
         justify-content: center;
       }
+      
+      .container h1 {
+        font-size: 2rem;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .project-card {
+        margin-bottom: 30px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .container h1 {
+        font-size: 1.8rem;
+      }
+      
+      .project-title {
+        font-size: 1.3rem;
+      }
+      
+      .project-description {
+        font-size: 0.95rem;
+      }
     }
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+  <!-- Particle Background -->
+  <div id="particles-js"></div>
+  
+  <!-- Floating circles background -->
+  <ul class="floating-circles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  
   <!-- Navigation Bar -->
-  <nav>
+  <nav id="navbar">
     <div class="nav-left">
       <div class="name">ARUN M PORTFOLIO</div>
     </div>
     <div class="nav-right">
-      <a href="index.html">Home</a>
-      <a href="skill.html">Skills</a>
-      <a href="education.html">Education</a>
-      <a href="project.html">Projects</a>
-      <a href="certificate.html">Certifications</a>
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="skill.html"><i class="fas fa-code"></i> Skills</a>
+      <a href="education.html"><i class="fas fa-graduation-cap"></i> Education</a>
+      <a href="project.html"><i class="fas fa-project-diagram"></i> Projects</a>
+      <a href="certificate.html"><i class="fas fa-certificate"></i> Certifications</a>
     </div>
   </nav>
 
@@ -230,25 +501,24 @@
 
     <div class="projects-grid">
       <!-- Project 1 -->
-             <div class="project-card">
+      <div class="project-card">
         <iframe 
           src="https://arun-m15.github.io/AgroVisionTech/" 
           class="project-preview"
-          title="E-Commerce Platform Preview"
+          title="AgroVisionAI Preview"
           loading="lazy">
         </iframe>
         <div class="project-details">
           <div class="project-header">
-            <h2 class="project-title">AgroVisionAI-smart AI farming</h2>
+            <h2 class="project-title">AgroVisionAI - Smart AI Farming</h2>
             <span class="project-status status-completed">Completed</span>
           </div>
           <p class="project-description">
-           AgroVisionAI is a smart AI-powered decision support system for farmers. It helps optimize fertilizer use, detect crop diseases early, and suggests best farming practices based on live weather, soil, and market data.
-            Available in local languages with real-time Q&A support.
+            AgroVisionAI is a smart AI-powered decision support system for farmers. It helps optimize fertilizer use, detect crop diseases early, and suggests best farming practices based on live weather, soil, and market data. Available in local languages with real-time Q&A support.
           </p>
-          <p class="project-tech">html,css,js,fastAPI,geminiAPI,openweatherAPI</p>
+          <p class="project-tech">Technologies: HTML, CSS, JavaScript, FastAPI, Gemini API, OpenWeather API</p>
           <div class="project-links">
-            <a href="https://arun-m15.github.io/AgroVisionTech/" class="project-link" target="_blank">
+            <a href="https://github.com/arun-m15/AgroVisionTech" class="project-link" target="_blank">
               <i class="fab fa-github"></i> Code
             </a>
             <a href="https://arun-m15.github.io/AgroVisionTech/" class="project-link" target="_blank">
@@ -258,12 +528,12 @@
         </div>
       </div>
 
-      <!--project 2-->>
+      <!-- Project 2 -->
       <div class="project-card">
         <iframe 
           src="https://snm-garden.netlify.app" 
           class="project-preview"
-          title="E-Commerce Platform Preview"
+          title="Weekly Price Tracker Preview"
           loading="lazy">
         </iframe>
         <div class="project-details">
@@ -272,8 +542,7 @@
             <span class="project-status status-completed">Completed</span>
           </div>
           <p class="project-description">
-            Built a Weekly Price Tracker web app to calculate daily wages based on user-entered salary and attendance.
-Enables users to input weekly data and get automated summaries of total workdays and earnings.
+            Built a Weekly Price Tracker web app to calculate daily wages based on user-entered salary and attendance. Enables users to input weekly data and get automated summaries of total workdays and earnings.
           </p>
           <p class="project-tech">Technologies: React, Node.js, MongoDB, Stripe API</p>
           <div class="project-links">
@@ -287,12 +556,12 @@ Enables users to input weekly data and get automated summaries of total workdays
         </div>
       </div>
 
-      <!-- Project 2 -->
+      <!-- Project 3 -->
       <div class="project-card">
         <iframe
           src="https://arun-m15.github.io/Arun-Portfolio/index.html"
           class="project-preview"
-          title="Task Management App Preview"
+          title="Portfolio Preview"
           loading="lazy">
         </iframe>
         <div class="project-details">
@@ -315,7 +584,7 @@ Enables users to input weekly data and get automated summaries of total workdays
         </div>
       </div>
 
-      <!-- Project 3 -->
+      <!-- Project 4 -->
       <div class="project-card">
         <iframe
           src="https://example-project3.netlify.app"
@@ -329,8 +598,7 @@ Enables users to input weekly data and get automated summaries of total workdays
             <span class="project-status status-planned">Planned</span>
           </div>
           <p class="project-description">
-            Planned health tracking application with workout logging, nutrition tracking, 
-            and progress visualization. Design phase completed.
+            Planned health tracking application with workout logging, nutrition tracking, and progress visualization. Design phase completed.
           </p>
           <p class="project-tech">Technologies: React Native, GraphQL, PostgreSQL</p>
           <div class="project-links">
@@ -342,5 +610,155 @@ Enables users to input weekly data and get automated summaries of total workdays
       </div>
     </div>
   </div>
+
+  <footer>
+    &copy; 2025 Arun. All Rights Reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    // Initialize particles.js
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof particlesJS !== 'undefined') {
+        particlesJS('particles-js', {
+          "particles": {
+            "number": {
+              "value": 80,
+              "density": {
+                "enable": true,
+                "value_area": 800
+              }
+            },
+            "color": {
+              "value": "#44daff"
+            },
+            "shape": {
+              "type": "circle",
+              "stroke": {
+                "width": 0,
+                "color": "#000000"
+              },
+              "polygon": {
+                "nb_sides": 5
+              }
+            },
+            "opacity": {
+              "value": 0.5,
+              "random": false,
+              "anim": {
+                "enable": false,
+                "speed": 1,
+                "opacity_min": 0.1,
+                "sync": false
+              }
+            },
+            "size": {
+              "value": 3,
+              "random": true,
+              "anim": {
+                "enable": false,
+                "speed": 40,
+                "size_min": 0.1,
+                "sync": false
+              }
+            },
+            "line_linked": {
+              "enable": true,
+              "distance": 150,
+              "color": "#44daff",
+              "opacity": 0.2,
+              "width": 1
+            },
+            "move": {
+              "enable": true,
+              "speed": 2,
+              "direction": "none",
+              "random": false,
+              "straight": false,
+              "out_mode": "out",
+              "bounce": false,
+              "attract": {
+                "enable": false,
+                "rotateX": 600,
+                "rotateY": 1200
+              }
+            }
+          },
+          "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+              "onhover": {
+                "enable": true,
+                "mode": "grab"
+              },
+              "onclick": {
+                "enable": true,
+                "mode": "push"
+              },
+              "resize": true
+            },
+            "modes": {
+              "grab": {
+                "distance": 140,
+                "line_linked": {
+                  "opacity": 1
+                }
+              },
+              "bubble": {
+                "distance": 400,
+                "size": 40,
+                "duration": 2,
+                "opacity": 8,
+                "speed": 3
+              },
+              "repulse": {
+                "distance": 200,
+                "duration": 0.4
+              },
+              "push": {
+                "particles_nb": 4
+              },
+              "remove": {
+                "particles_nb": 2
+              }
+            }
+          },
+          "retina_detect": true
+        });
+      }
+
+      // Navbar scroll effect
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+      
+      // Add ripple effect to buttons
+      document.querySelectorAll('nav a').forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const x = e.clientX - e.target.getBoundingClientRect().left;
+          const y = e.clientY - e.target.getBoundingClientRect().top;
+          
+          const ripple = document.createElement('span');
+          ripple.className = 'ripple';
+          ripple.style.left = x + 'px';
+          ripple.style.top = y + 'px';
+          
+          this.appendChild(ripple);
+          
+          setTimeout(() => {
+            ripple.remove();
+            window.location.href = this.getAttribute('href');
+          }, 500);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
